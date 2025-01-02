@@ -1,6 +1,7 @@
 import type { FunctionComponent } from "../common/types";
 import { useState, useEffect } from "react";
-import { FaWhatsapp, FaTwitter, FaSms, FaTelegram, FaEnvelope, FaMoon, FaSun, FaCopy, FaShareAlt } from "react-icons/fa";
+import { FaWhatsapp, FaTwitter, FaSms, FaTelegram, FaEnvelope, FaMoon, FaSun, FaCopy, FaShareAlt, FaHeart } from "react-icons/fa";
+import { Navigation } from '../components/Navigation.tsx';
 
 export const Home = (): FunctionComponent => {
 	const [quote, setQuote] = useState<string>("");
@@ -88,8 +89,28 @@ export const Home = (): FunctionComponent => {
 		closeShareModal();
 	};
 
+	const saveToFavorites = () => {
+		const newFavorite = { quote, author };
+		const existingFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+		const isAlreadySaved = existingFavorites.some(
+			(fav: { quote: string; author: string }) => 
+			fav.quote === quote && fav.author === author
+		);
+
+		if (!isAlreadySaved) {
+			const updatedFavorites = [...existingFavorites, newFavorite];
+			localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+			setToast('Quote added to favorites!');
+			setTimeout(() => setToast(''), 3000);
+		} else {
+			setToast('Quote already in favorites!');
+			setTimeout(() => setToast(''), 3000);
+		}
+	};
+
 	return (
 		<div className={`${darkMode ? "bg-black text-white" : "bg-white text-black"} w-screen h-screen flex flex-col justify-center items-center p-4 transition-colors duration-500`}>
+			<Navigation darkMode={darkMode} />
 			<div className="absolute top-4 left-4 text-lg font-bold">
 				DailyYou
 			</div>
@@ -109,6 +130,9 @@ export const Home = (): FunctionComponent => {
 			<div className="absolute bottom-4 right-4 flex space-x-4">
 				<button onClick={toggleDarkMode} className="text-sm">
 					{darkMode ? <FaSun /> : <FaMoon />}
+				</button>
+				<button onClick={saveToFavorites} className="text-sm">
+					<FaHeart />
 				</button>
 				<button onClick={copyQuote} className="text-sm">
 					<FaCopy />

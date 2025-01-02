@@ -16,7 +16,6 @@ export default defineConfig({
 		  }
 		]
 	  })],
-	  base: "/DailyYou",
 	server: {
 		host: true,
 		strictPort: true,
