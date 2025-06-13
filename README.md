@@ -2,8 +2,6 @@
 
 A modern React application for daily inspiration, habit tracking, and personal growth. Built with TypeScript, Vite, and a comprehensive tech stack for scalability and developer experience.
 
-![DailyYou Preview](public/vite-react-boilerplate.png)
-
 ## 🌟 Features
 
 - **Daily Inspirational Quotes** - Get motivated with curated quotes and authors
