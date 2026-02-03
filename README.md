@@ -1,255 +1,108 @@
-# DailyYou
+# 🌟 DailyYou
 
-A modern React application for daily inspiration, habit tracking, and personal growth. Built with TypeScript, Vite, and a comprehensive tech stack for scalability and developer experience.
+Her gün ilham verici sözlerle motive olun! Modern ve minimalist tasarımlı, kullanıcı dostu günlük ilham uygulaması.
 
-## 🌟 Features
+![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwindcss&logoColor=white)
 
-- **Daily Inspirational Quotes** - Get motivated with curated quotes and authors
-- **Dark/Light Mode** - Toggle between themes for comfortable viewing
-- **Quote Management** - Save favorites, copy, and share quotes across platforms
-- **Social Sharing** - Share inspiration via WhatsApp, Telegram, Twitter, Email, and SMS
-- **Responsive Design** - Optimized for all devices with Tailwind CSS
-- **Internationalization** - Multi-language support with i18next
-- **Data Visualization** - Rich charts and graphs for tracking progress
+## ✨ Özellikler
 
-## 🚀 Quick Start
+- 🎯 **Günlük İlham** - 30+ ünlü isimden ilham verici sözler
+- 🌓 **Karanlık/Aydınlık Mod** - Gözlerinizi yormayan tema seçenekleri
+- ❤️ **Favoriler** - Beğendiğiniz sözleri kaydedin
+- 📋 **Kopyala** - Sözleri tek tıkla panoya kopyalayın
+- 📤 **Paylaş** - WhatsApp, Telegram, Twitter, E-mail ve SMS ile paylaşın
+- 🌍 **Çoklu Dil** - Türkçe ve İngilizce dil desteği
+- 📱 **Responsive** - Tüm cihazlarda mükemmel görünüm
+
+## 🚀 Hızlı Başlangıç
 
 ```bash
-# Clone the repository
-git clone <your-repo-url>
+# Projeyi klonlayın
+git clone https://github.com/yourusername/DailyYou.git
 cd DailyYou
 
-# Install dependencies
-pnpm install
+# Bağımlılıkları yükleyin
+npm install --legacy-peer-deps
 
-# Run setup script (initializes git hooks and installs playwright)
-pnpm run setup
-
-# Start development server
-pnpm run dev
+# Geliştirme sunucusunu başlatın
+npm run dev
 ```
 
-Visit `http://localhost:5173` to see your application running.
+Tarayıcınızda `http://localhost:5173` adresini açın.
 
-## 🛠️ Tech Stack
+## 🛠️ Teknolojiler
 
-### Core Framework
-- **[React 18.3.1](https://react.dev)** - Modern UI library with hooks and concurrent features
-- **[TypeScript 5.5.4](https://typescriptlang.org)** - Type safety and enhanced developer experience
-- **[Vite 5.4.2](https://vitejs.dev)** - Lightning-fast build tool and dev server
+| Teknoloji | Açıklama |
+|-----------|----------|
+| **React 18** | Modern UI geliştirme |
+| **TypeScript** | Tip güvenliği |
+| **Vite** | Hızlı build ve geliştirme |
+| **Tailwind CSS** | Utility-first CSS |
+| **Zustand** | Hafif state yönetimi |
+| **React Router** | Sayfa yönlendirme |
+| **i18next** | Çoklu dil desteği |
 
-### Routing & State Management
-- **[TanStack Router](https://tanstack.com/router/v1)** - Type-safe routing with file-based routing
-- **[TanStack Query](https://tanstack.com/query/latest)** - Powerful data fetching and caching
-- **[Zustand](https://zustand-demo.pmnd.rs)** - Lightweight state management
-
-### UI & Styling
-- **[Tailwind CSS](https://tailwindcss.com)** - Utility-first CSS framework
-- **[HeadlessUI](https://headlessui.com)** - Unstyled, accessible UI components
-- **[Heroicons](https://heroicons.com)** - Beautiful hand-crafted SVG icons
-- **[React Icons](https://react-icons.github.io/react-icons/)** - Popular icon libraries
-
-### Forms & Validation
-- **[React Hook Form](https://react-hook-form.com)** - Performant forms with minimal re-renders
-- **[Zod](https://zod.dev)** - TypeScript-first schema validation
-
-### Data Visualization
-- **[Nivo](https://nivo.rocks)** - Rich set of dataviz components built on D3
-  - Line charts for progress tracking
-  - Bar charts for habit completion rates
-  - Pie charts for time distribution
-
-### Development Tools
-- **[Storybook](https://storybook.js.org)** - Tool for building UI components in isolation
-- **[ESLint](https://eslint.org)** - Code linting with TypeScript support
-- **[Prettier](https://prettier.io)** - Opinionated code formatting
-
-## 📁 Project Structure
+## 📁 Proje Yapısı
 
 ```
 src/
-├── assets/          # Static assets (images, fonts, etc.)
-├── common/          # Shared utilities, types, and configurations
-├── components/      # Reusable UI components
-│   ├── charts/      # Data visualization components
-│   ├── forms/       # Form-related components
-│   ├── layout/      # Layout components (headers, sidebars, etc.)
-│   ├── ui/          # Basic UI components (buttons, inputs, etc.)
-│   └── utils/       # Utility components including dev tools
-├── features/        # Feature-specific modules
-├── hooks/          # Custom React hooks
-├── pages/          # Page components (Home, etc.)
-├── routes/         # TanStack Router route definitions
-├── store/          # Zustand store definitions
-└── styles/         # Global styles and Tailwind imports
+├── assets/locales/     # Dil dosyaları (en, tr)
+├── common/             # Ortak tipler ve yardımcılar
+├── components/         # Yeniden kullanılabilir bileşenler
+│   ├── Navigation.tsx  # Ana navigasyon
+│   └── ...
+├── pages/              # Sayfa bileşenleri
+│   ├── Home.tsx        # Ana sayfa - sözler
+│   ├── Favorites.tsx   # Favoriler sayfası
+│   └── Contact.tsx     # İletişim formu
+├── store/              # Zustand state yönetimi
+│   └── themeStore.ts   # Tema durumu
+└── styles/             # Global stiller
 ```
 
-## 🧪 Testing
+## 📜 Kullanılabilir Komutlar
 
-### Unit Tests
-```bash
-# Run unit tests
-pnpm run test:unit
+| Komut | Açıklama |
+|-------|----------|
+| `npm run dev` | Geliştirme sunucusu |
+| `npm run build` | Prodüksiyon build |
+| `npm run preview` | Build önizleme |
+| `npm run lint` | Kod analizi |
+| `npm run format` | Kod formatlama |
+| `npm run test` | Testleri çalıştır |
+| `npm run storybook` | Storybook başlat |
 
-# Run with coverage
-pnpm run test:unit:coverage
-```
+## 🎨 Ekran Görüntüleri
 
-### End-to-End Tests
-```bash
-# Run E2E tests
-pnpm run test:e2e
+### Ana Sayfa
+- Günlük ilham verici sözler
+- "tap for more" ile yeni söz
+- Karanlık/aydınlık mod geçişi
 
-# View test reports
-pnpm run test:e2e:report
-```
+### Özellikler
+- ❤️ Favorilere ekleme
+- 📋 Panoya kopyalama
+- 📤 Sosyal medyada paylaşım
 
-### All Tests
-```bash
-pnpm run test
-```
+## 🤝 Katkıda Bulunma
 
-## 📊 Development Tools & DevTools
+1. Fork yapın
+2. Feature branch oluşturun: `git checkout -b feature/amazing-feature`
+3. Değişikliklerinizi commit edin: `git commit -m 'feat: add amazing feature'`
+4. Branch'i push edin: `git push origin feature/amazing-feature`
+5. Pull Request açın
 
-The project includes several development tools to enhance the development experience:
+## 📄 Lisans
 
-- **TanStack Query Devtools** - Server state debugging (bottom left corner)
-- **TanStack Router Devtools** - Routing inspection (bottom right corner)
-- **TanStack Table Devtools** - Table state visualization
-- **React Hook Form Devtools** - Form debugging (pink clipboard icon)
-- **Zustand DevTools** - State management debugging via Redux DevTools
+Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
-All devtools are automatically excluded from production builds.
+## 👨‍💻 Geliştirici
 
-## 🎨 Storybook
-
-Develop and test components in isolation:
-
-```bash
-# Start Storybook dev server
-pnpm run storybook
-
-# Build Storybook for production
-pnpm run storybook:build
-```
-
-## 🏗️ Building & Deployment
-
-### Local Build
-```bash
-# Build for production
-pnpm run build
-
-# Preview production build
-pnpm run preview
-```
-
-### Docker Deployment
-```bash
-# Build the project
-pnpm run build
-
-# Build Docker image
-docker build . -t dailyou
-
-# Run container
-docker run -p 8080:80 dailyou
-```
-
-The application will be available at `http://localhost:8080`.
-
-## 🌍 Internationalization
-
-The project supports multiple languages using i18next:
-
-- Automatic language detection
-- Browser language preference support
-- Easy addition of new locales
-- Namespace organization for translations
-
-## ⚙️ Configuration Files
-
-| File | Purpose |
-|------|---------|
-| [`vite.config.ts`](vite.config.ts) | Vite build configuration |
-| [`tailwind.config.js`](tailwind.config.js) | Tailwind CSS customization |
-| [`eslint.config.js`](eslint.config.js) | ESLint rules and plugins |
-| [`prettier.config.js`](prettier.config.js) | Code formatting preferences |
-| [`tsconfig.json`](tsconfig.json) | TypeScript compiler options |
-| [`playwright.config.ts`](playwright.config.ts) | E2E testing configuration |
-
-## 📋 Available Scripts
-
-| Script | Description |
-|--------|-------------|
-| `pnpm run dev` | Start development server |
-| `pnpm run build` | Build for production |
-| `pnpm run preview` | Preview production build |
-| `pnpm run test` | Run all tests |
-| `pnpm run test:unit` | Run unit tests only |
-| `pnpm run test:e2e` | Run E2E tests only |
-| `pnpm run lint` | Run ESLint |
-| `pnpm run lint:fix` | Fix ESLint issues |
-| `pnpm run format` | Format code with Prettier |
-| `pnpm run storybook` | Start Storybook |
-| `pnpm run setup` | Initialize project setup |
-
-## 🔧 Code Quality & Git Hooks
-
-The project includes automated code quality tools:
-
-- **Husky** - Git hooks for automated checks
-- **Commitizen** - Interactive commit message creation
-- **Commitlint** - Enforce conventional commit messages
-- **ESLint** - Static code analysis
-- **Prettier** - Consistent code formatting
-
-Commit messages follow the [Conventional Commits](https://conventionalcommits.org/) specification.
-
-## 🎯 Key Features Implementation
-
-### Quote Management
-- Random quote fetching with author attribution
-- Favorite quotes storage
-- Copy to clipboard functionality
-- Social platform sharing
-
-### Theme Support
-- Light/dark mode toggle
-- Persistent theme preference
-- Smooth transitions between themes
-
-### Social Sharing
-- WhatsApp, Telegram, Twitter integration
-- Email and SMS sharing options
-- Custom share modal with platform selection
-
-## 📦 Requirements
-
-- **Node.js 18+**
-- **pnpm** (recommended) or npm/yarn
-- **Modern browser** with ES2020 support
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes following the code style
-4. Run tests: `pnpm run test`
-5. Commit using conventional commits: `git commit`
-6. Push to your branch: `git push origin feature/amazing-feature`
-7. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Built on top of the excellent [Vite React Boilerplate](https://github.com/RicardoValdovinos/vite-react-boilerplate)
-- Inspired by the need for daily motivation and habit tracking
-- Thanks to the open-source community for the amazing tools and libraries
+**Faruk Büberci**
 
 ---
 
-**DailyYou** - Start each day with inspiration and track your journey to personal growth! 🌱
+⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!

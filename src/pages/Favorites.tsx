@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import type { FunctionComponent } from "../common/types";
 import { Navigation } from '../components/Navigation';
 import { FaTrash } from 'react-icons/fa';
+import { useThemeStore } from '../store/themeStore';
 
-export const Favorites = (): FunctionComponent => {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+export const Favorites: FunctionComponent = () => {
+  const { darkMode } = useThemeStore();
   const [favorites, setFavorites] = useState<Array<{ quote: string; author: string }>>([]);
 
   useEffect(() => {
     // Load favorites from localStorage
-    const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]') as Array<{ quote: string; author: string }>;
     setFavorites(savedFavorites);
   }, []);
 
@@ -20,23 +21,25 @@ export const Favorites = (): FunctionComponent => {
   };
 
   return (
-    <div className={`${darkMode ? "bg-black text-white" : "bg-white text-black"} min-h-screen`}>
-      <Navigation darkMode={darkMode} />
-      
+    <div className={`${darkMode ? "bg-black text-white" : "bg-white text-black"} min-h-screen transition-colors duration-500`}>
+      <Navigation />
+
       <div className="pt-20 px-4 max-w-screen-xl mx-auto">
         <h1 className="text-2xl font-bold mb-6">Your Favorite Quotes</h1>
-        
+
         {favorites.length === 0 ? (
           <p className="text-center text-gray-500">No favorite quotes yet. Add some from the home page!</p>
         ) : (
           <div className="grid gap-4">
             {favorites.map((fav, index) => (
-              <div key={index} className={`${darkMode ? "bg-gray-800" : "bg-gray-100"} p-4 rounded-lg relative`}>
+              <div key={index} className={`${darkMode ? "bg-gray-800" : "bg-gray-100"} p-4 rounded-lg relative transition-colors duration-500`}>
                 <p className="text-xl mb-2">"{fav.quote}"</p>
                 <p className="text-gray-500">- {fav.author}</p>
                 <button
+                  type="button"
                   onClick={() => removeFavorite(index)}
-                  className="absolute top-2 right-2 text-red-500 hover:text-red-700"
+                  className="absolute top-2 right-2 text-red-500 hover:text-red-700 transition-colors"
+                  aria-label="Favoriden kaldır"
                 >
                   <FaTrash />
                 </button>

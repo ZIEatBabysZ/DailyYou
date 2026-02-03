@@ -1,4 +1,6 @@
-export type FunctionComponent = React.ReactElement | null;
+import type React from 'react';
+
+export type FunctionComponent = React.FC;
 
 type HeroIconSVGProps = React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> &
 	React.RefAttributes<SVGSVGElement>;
