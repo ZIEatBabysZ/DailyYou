@@ -1,7 +1,6 @@
 import type { FunctionComponent } from "../common/types";
 import { useState, useEffect } from "react";
 import { FaWhatsapp, FaTwitter, FaSms, FaTelegram, FaEnvelope, FaCopy, FaShareAlt, FaHeart } from "react-icons/fa";
-import { Navigation } from '../components/Navigation';
 import { useThemeStore } from '../store/themeStore';
 
 export const Home: FunctionComponent = () => {
@@ -136,7 +135,6 @@ export const Home: FunctionComponent = () => {
 
 	return (
 		<div className={`${darkMode ? "bg-black text-white" : "bg-white text-black"} w-screen h-screen flex flex-col justify-center items-center p-4 transition-colors duration-500`}>
-			<Navigation />
 			<div className={`max-w-md text-center transition-opacity duration-500 ${fade ? "opacity-0" : "opacity-100"}`}>
 				<p className="text-3xl font-light mb-4">{quote}</p>
 				<p className="text-gray-500 text-xl mb-8">{author.toLowerCase()}</p>

@@ -1,79 +1,67 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import type { FunctionComponent } from "../common/types";
-import { Navigation } from '../components/Navigation';
 import { useThemeStore } from '../store/themeStore';
+
+const schema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
+
+type FormData = z.infer<typeof schema>;
 
 export const Contact: FunctionComponent = () => {
   const { darkMode } = useThemeStore();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
   const [toast, setToast] = useState<string>('');
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+  const onSubmit = (data: FormData) => {
+    console.log('Form submitted:', data);
     setToast('Message sent successfully!');
-    setTimeout(() => setToast(''), 3000);
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setTimeout(() => { setToast(''); }, 3000);
+    void reset();
   };
 
   return (
     <div className={`${darkMode ? "bg-black text-white" : "bg-white text-black"} min-h-screen transition-colors duration-500`}>
-      <Navigation />
-
       <div className="pt-20 px-4 max-w-screen-xl mx-auto">
         <h1 className="text-2xl font-bold mb-6">Contact Us</h1>
 
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
           <div className="mb-4">
             <label htmlFor="name" className="block mb-2">Name</label>
             <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
+              {...register('name')}
               className={`w-full p-2 rounded border ${darkMode ? "bg-gray-800 border-gray-700" : "bg-gray-100 border-gray-300"} transition-colors duration-500`}
-              required
             />
+            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
           </div>
 
           <div className="mb-4">
             <label htmlFor="email" className="block mb-2">Email</label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
+              {...register('email')}
               className={`w-full p-2 rounded border ${darkMode ? "bg-gray-800 border-gray-700" : "bg-gray-100 border-gray-300"} transition-colors duration-500`}
-              required
             />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
           </div>
 
           <div className="mb-4">
             <label htmlFor="message" className="block mb-2">Message</label>
             <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
+              {...register('message')}
               className={`w-full p-2 rounded border ${darkMode ? "bg-gray-800 border-gray-700" : "bg-gray-100 border-gray-300"} transition-colors duration-500`}
               rows={5}
-              required
             />
+            {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
           </div>
 
           <button

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import type { FunctionComponent } from "../common/types";
-import { Navigation } from '../components/Navigation';
 import { FaTrash } from 'react-icons/fa';
 import { useThemeStore } from '../store/themeStore';
 
@@ -22,8 +21,6 @@ export const Favorites: FunctionComponent = () => {
 
   return (
     <div className={`${darkMode ? "bg-black text-white" : "bg-white text-black"} min-h-screen transition-colors duration-500`}>
-      <Navigation />
-
       <div className="pt-20 px-4 max-w-screen-xl mx-auto">
         <h1 className="text-2xl font-bold mb-6">Your Favorite Quotes</h1>
 
